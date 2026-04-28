@@ -1,4 +1,5 @@
-import { ArrowRight, BadgeCheck, CalendarDays, Check, ChevronRight, MessageCircle, Sparkles, Zap } from "lucide-react";
+import { useEffect, useState } from "react";
+import { ArrowRight, BadgeCheck, Check, ChevronRight, Copy, Sparkles, X, Zap } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ghlComparison from "@/assets/ghl-comparison.png";
 import ghlNurture from "@/assets/ghl-nurture.png";
@@ -32,16 +33,83 @@ const faqs = [
   ["Where do I get help?", `Email Guaranteed CRM support at ${supportEmail} and our team will help with setup questions.`],
 ];
 
-const WhatsAppButton = () => (
-  <a href="https://wa.me/+13072784862" aria-label="Chat with Guaranteed CRM on WhatsApp" className="fixed left-4 top-1/2 z-50 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full bg-primary text-primary-foreground shadow-glow transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
-    <MessageCircle className="h-7 w-7" />
-  </a>
-);
+const discountCode = "LTD20";
+
+const ExitOfferPopup = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [hasShown, setHasShown] = useState(false);
+  const [isCopied, setIsCopied] = useState(false);
+  const [closeAttempted, setCloseAttempted] = useState(false);
+
+  useEffect(() => {
+    window.history.replaceState({ guaranteedCrmPage: true }, "");
+    window.history.pushState({ guaranteedCrmExitGuard: true }, "");
+
+    const showOffer = () => {
+      if (!hasShown) {
+        setIsOpen(true);
+        setHasShown(true);
+      }
+    };
+
+    const handleMouseLeave = (event: MouseEvent) => {
+      if (event.clientY <= 0) showOffer();
+    };
+
+    const handlePopState = () => {
+      showOffer();
+      window.history.pushState({ guaranteedCrmExitGuard: true }, "");
+    };
+
+    document.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("popstate", handlePopState);
+
+    return () => {
+      document.removeEventListener("mouseleave", handleMouseLeave);
+      window.removeEventListener("popstate", handlePopState);
+    };
+  }, [hasShown]);
+
+  const copyCode = async () => {
+    await navigator.clipboard.writeText(discountCode);
+    setIsCopied(true);
+  };
+
+  const tryClose = () => {
+    if (!closeAttempted) {
+      setCloseAttempted(true);
+      return;
+    }
+    setIsOpen(false);
+  };
+
+  if (!isOpen) return null;
+
+  return (
+    <div className="fixed inset-0 z-[60] grid place-items-center bg-background/85 px-5 backdrop-blur-md" role="dialog" aria-modal="true" aria-labelledby="exit-offer-title">
+      <div className="relative w-full max-w-lg rounded-2xl border border-primary/40 bg-card-gradient p-6 text-center shadow-glow md:p-8">
+        <button type="button" onClick={tryClose} aria-label="Close discount offer" className="absolute right-4 top-4 grid h-10 w-10 place-items-center rounded-md border border-border bg-background/70 text-muted-foreground transition hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring">
+          <X className="h-5 w-5" />
+        </button>
+        <p className="mx-auto mb-4 inline-flex rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-black text-primary">Before you go — 20% off Lifetime</p>
+        <h2 id="exit-offer-title" className="text-3xl font-black leading-tight md:text-5xl">Get the LTD plan for just <span className="text-price-gradient">$79</span></h2>
+        <p className="mt-4 text-lg leading-relaxed text-muted-foreground">Copy this code and use it at checkout to lock in Lifetime GoHighLevel access before the wholesale slots are gone.</p>
+        {closeAttempted && <p className="mt-4 rounded-xl border border-warning/40 bg-warning/10 p-4 text-sm font-bold text-warning">Wait — this one-time Lifetime discount may not show again. Grab the $79 LTD deal now instead of paying full price later.</p>}
+        <button type="button" onClick={copyCode} className="mt-6 flex w-full items-center justify-between rounded-xl border border-primary/50 bg-primary/10 px-5 py-4 text-left transition hover:bg-primary/15 focus:outline-none focus:ring-2 focus:ring-ring">
+          <span><span className="block text-xs font-bold uppercase text-muted-foreground">Click to copy code</span><span className="text-3xl font-black text-primary">{discountCode}</span></span>
+          <span className="inline-flex items-center gap-2 text-sm font-black text-primary"><Copy className="h-5 w-5" />{isCopied ? "Copied" : "Copy"}</span>
+        </button>
+        <Button asChild variant="hero" size="xl" className="mt-5 w-full animate-pulse-glow"><a href="/thank-you">Get LTD Plan – $79 <ArrowRight /></a></Button>
+        <button type="button" onClick={tryClose} className="mt-4 text-sm font-bold text-muted-foreground underline-offset-4 hover:text-foreground hover:underline">No thanks, I’ll pay full price.</button>
+      </div>
+    </div>
+  );
+};
 
 const Index = () => {
   return (
     <main className="min-h-screen overflow-hidden bg-background text-foreground">
-      <WhatsAppButton />
+      <ExitOfferPopup />
       <nav className="sticky top-0 z-40 border-b border-border/70 bg-background/88 backdrop-blur-xl">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <a href="#top" className="flex items-center gap-3 font-extrabold"><span className="grid h-10 w-10 place-items-center rounded-lg bg-cta-gradient text-primary-foreground">G</span><span>Guaranteed CRM</span></a>

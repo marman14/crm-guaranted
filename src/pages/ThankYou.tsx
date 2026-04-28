@@ -1,20 +1,13 @@
-import { ArrowRight, CheckCircle2, MessageCircle, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import ghlCheckout from "@/assets/ghl-checkout.png";
 
 const supportEmail = "crm@arwebcrafts.com";
 const currentYear = new Date().getFullYear();
 
-const WhatsAppButton = () => (
-  <a href="https://wa.me/+13072784862" aria-label="Chat with Guaranteed CRM on WhatsApp" className="fixed left-4 top-1/2 z-50 grid h-14 w-14 -translate-y-1/2 place-items-center rounded-full bg-primary text-primary-foreground shadow-glow transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background">
-    <MessageCircle className="h-7 w-7" />
-  </a>
-);
-
 const ThankYou = () => {
   return (
     <main className="min-h-screen bg-hero-gradient text-foreground">
-      <WhatsAppButton />
       <nav className="border-b border-border/70 bg-background/75 backdrop-blur-xl">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4">
           <a href="/" className="flex items-center gap-3 font-extrabold"><span className="grid h-10 w-10 place-items-center rounded-lg bg-cta-gradient text-primary-foreground">G</span><span>Guaranteed CRM</span></a>
