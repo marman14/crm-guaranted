@@ -120,21 +120,21 @@ const Index = () => {
         </div>
       </nav>
 
-      <section id="top" className="bg-hero-gradient px-5 pb-16 pt-14 md:pb-24 md:pt-20">
+      <section id="top" className="bg-hero-gradient px-5 pb-16 pt-14 text-white md:pb-24 md:pt-20">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
           <div>
-            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-4 py-2 text-sm font-bold text-primary"><Sparkles className="h-4 w-4" /> Wholesale GoHighLevel CRM sub-accounts</p>
-            <h1 className="max-w-5xl text-5xl font-black leading-[0.98] md:text-7xl">Full GoHighLevel (GHL) CRM for <span className="text-price-gradient">$49/year</span> – or <span className="text-price-gradient">$99 Lifetime</span></h1>
-            <p className="mt-6 max-w-3xl text-xl leading-relaxed text-muted-foreground">Get a REAL GoHighLevel sub-account under our Guaranteed CRM agency instead of paying $97/month. Same all-in-one CRM, funnels, automations & calendars – you just pay wholesale.</p>
+            <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-accent/40 bg-accent/15 px-4 py-2 text-sm font-bold text-accent"><Sparkles className="h-4 w-4" /> Wholesale GoHighLevel CRM sub-accounts</p>
+            <h1 className="max-w-5xl text-5xl font-black leading-[0.98] md:text-7xl">Full GoHighLevel (GHL) CRM for <span className="text-accent-gradient">$49/year</span> – or <span className="text-accent-gradient">$99 Lifetime</span></h1>
+            <p className="mt-6 max-w-3xl text-xl leading-relaxed text-white/75">Get a REAL GoHighLevel sub-account under our Guaranteed CRM agency instead of paying $97/month. Same all-in-one CRM, funnels, automations & calendars – you just pay wholesale.</p>
             <div className="mt-8 flex flex-wrap items-center gap-5">
-              <div className="rotate-[-3deg] text-3xl font-black text-danger line-through decoration-[8px] md:text-5xl">$97 / month</div>
-              <div className="rounded-xl border border-primary/40 bg-primary/10 px-5 py-3 text-3xl font-black text-primary shadow-glow md:text-5xl">$49 / YEAR</div>
-              <div className="rounded-xl border border-accent/50 bg-accent/10 px-5 py-3 text-2xl font-black text-accent md:text-4xl">or $99 LIFETIME</div>
+              <div className="rotate-[-3deg] text-3xl font-black text-white/60 line-through decoration-[6px] decoration-danger md:text-5xl">$97 / month</div>
+              <div className="rounded-xl border border-accent/50 bg-accent/15 px-5 py-3 text-3xl font-black text-accent shadow-glow md:text-5xl">$49 / YEAR</div>
+              <div className="rounded-xl border border-white/20 bg-white/5 px-5 py-3 text-2xl font-black text-white md:text-4xl">or $99 LIFETIME</div>
             </div>
-            <p className="mt-4 text-sm font-bold text-muted-foreground">Real GoHighLevel (GHL) CRM sub-account by Guaranteed CRM.</p>
-            <div className="mt-7 grid gap-3 text-base text-foreground/90 sm:grid-cols-3">{["All-in-one GHL CRM, funnels, automations & calendars", "Perfect for agencies, SMMAs, freelancers & local businesses", "No long contracts. No hidden upsells."].map((item) => <div key={item} className="flex gap-2"><Check className="mt-1 h-5 w-5 shrink-0 text-primary" />{item}</div>)}</div>
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row"><Button asChild variant="hero" size="xl" className="animate-pulse-glow"><a href="#pricing">Get $49 / Year GHL Account <ArrowRight /></a></Button><Button asChild variant="heroOutline" size="xl"><a href="#pricing">Go Lifetime – $99</a></Button></div>
-            <p className="mt-5 max-w-2xl text-sm font-semibold text-warning">Limited number of wholesale GHL accounts released each month. Once they’re taken, prices go up for new buyers.</p>
+            <p className="mt-4 text-sm font-bold text-white/60">Real GoHighLevel (GHL) CRM sub-account by Guaranteed CRM.</p>
+            <div className="mt-7 grid gap-3 text-base text-white/90 sm:grid-cols-3">{["All-in-one GHL CRM, funnels, automations & calendars", "Perfect for agencies, SMMAs, freelancers & local businesses", "No long contracts. No hidden upsells."].map((item) => <div key={item} className="flex gap-2"><Check className="mt-1 h-5 w-5 shrink-0 text-accent" />{item}</div>)}</div>
+            <div className="mt-9 flex flex-col gap-4 sm:flex-row"><Button asChild variant="hero" size="xl" className="animate-pulse-glow"><a href="#pricing">Get $49 / Year GHL Account <ArrowRight /></a></Button><Button asChild variant="heroOutline" size="xl" className="border-white/40 bg-white/5 text-white hover:bg-white/10 hover:text-white"><a href="#pricing">Go Lifetime – $99</a></Button></div>
+            <p className="mt-5 max-w-2xl text-sm font-semibold text-accent">Limited number of wholesale GHL accounts released each month. Once they’re taken, prices go up for new buyers.</p>
           </div>
           <div className="relative">
             <div className="absolute -inset-6 rounded-[2rem] bg-primary/10 blur-3xl" />
@@ -153,7 +153,7 @@ const Index = () => {
 
       <section className="px-5 py-20"><div className="mx-auto max-w-4xl"><h2 className="text-center text-4xl font-black md:text-5xl">Frequently asked questions about this GHL deal</h2><div className="mt-10 space-y-4">{faqs.map(([q, a]) => <details key={q} className="group rounded-xl border border-border bg-card-gradient p-5"><summary className="cursor-pointer list-none text-lg font-black">{q}</summary><p className="mt-3 leading-relaxed text-muted-foreground">{a}</p></details>)}</div><p className="mt-8 text-center text-lg">Still have questions?<br />Email: <a className="font-bold text-primary" href={`mailto:${supportEmail}`}>{supportEmail}</a></p></div></section>
 
-      <section className="px-5 pb-20"><div className="mx-auto max-w-5xl rounded-3xl border border-primary/30 bg-hero-gradient p-8 text-center shadow-glow md:p-14"><h2 className="text-4xl font-black md:text-6xl">Ready to finally get GoHighLevel without $97/month?</h2><p className="mx-auto mt-5 max-w-3xl text-lg text-muted-foreground">Lock in your GoHighLevel CRM account today at wholesale pricing and start running your funnels, automations and clients from one powerful dashboard.</p><div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row"><Button asChild variant="hero" size="xl"><a href="#pricing">Get $49 Annual GHL Deal <ChevronRight /></a></Button><Button asChild variant="heroOutline" size="xl"><a href="#pricing">Upgrade to Lifetime – $99</a></Button></div></div></section>
+      <section className="px-5 pb-20"><div className="mx-auto max-w-5xl rounded-3xl border border-primary/30 bg-hero-gradient p-8 text-center text-white shadow-glow md:p-14"><h2 className="text-4xl font-black md:text-6xl">Ready to finally get GoHighLevel without $97/month?</h2><p className="mx-auto mt-5 max-w-3xl text-lg text-white/75">Lock in your GoHighLevel CRM account today at wholesale pricing and start running your funnels, automations and clients from one powerful dashboard.</p><div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row"><Button asChild variant="hero" size="xl"><a href="#pricing">Get $49 Annual GHL Deal <ChevronRight /></a></Button><Button asChild variant="heroOutline" size="xl" className="border-white/40 bg-white/5 text-white hover:bg-white/10 hover:text-white"><a href="#pricing">Upgrade to Lifetime – $99</a></Button></div></div></section>
 
       <footer className="border-t border-border px-5 py-8 text-center text-sm text-muted-foreground">© {currentYear} Guaranteed CRM by Ar WebCrafts – Wholesale GoHighLevel (GHL) CRM Accounts | Email: <a className="text-primary" href={`mailto:${supportEmail}`}>{supportEmail}</a></footer>
     </main>
